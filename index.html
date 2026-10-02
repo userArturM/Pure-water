@@ -14,6 +14,7 @@
 
 <title>Доставка воды 19 л в Пластуновской — чистая вода рядом</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
+<link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="assets/logo.png">
 <meta name="description" content="Доставка питьевой воды 19 литров. Выберите воду и закажите доставку в день заказа.">
 <meta property="og:title" content="Доставка питьевой воды 19 л">
@@ -887,7 +888,7 @@ footer strong{color:#fff}
 
     <div class="catalog-info">
       <div class="delivery-live">Сегодня доставляем до <span id="deliveryUntil">20:00</span></div>
-      <div class="store-address" id="storeAddress">📍 Станица Пластуновская, ул. Красная, 250</div>
+      <div class="store-address" id="storeAddress">📍 Станция Пластуновская, ул. Красная, 250</div>
     </div>
 
     <div class="controls reveal">
@@ -1050,7 +1051,7 @@ footer strong{color:#fff}
         <span class="eyebrow" style="color:#9beaf4">Как нас найти</span>
         <h2>Как проехать?</h2>
         <p>Хотите забрать воду самостоятельно? Откройте маршрут в Яндекс Картах — карта построит дорогу до нашего магазина.</p>
-        <div class="route-address">Станица Пластуновская, улица Красная, 250</div>
+        <div class="route-address">Станция Пластуновская, улица Красная, 250</div>
       </div>
       <a class="route-button" href="https://yandex.ru/maps/?text=%D0%A1%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F%20%D0%9F%D0%BB%D0%B0%D1%81%D1%82%D1%83%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%B0%D1%8F%2C%20250" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
@@ -1074,7 +1075,7 @@ footer strong{color:#fff}
         +7 928 223-53-33
       </a>
       <a class="address" href="https://yandex.ru/maps/?text=%D0%A1%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F%20%D0%9F%D0%BB%D0%B0%D1%81%D1%82%D1%83%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%B0%D1%8F%2C%20250" target="_blank" rel="noopener">
-        Станица Пластуновская, ул. Красная, 250 ↗
+        Станция Пластуновская, ул. Красная, 250 ↗
       </a>
     </div>
   </div>
@@ -1611,6 +1612,13 @@ function hideSplash() {
   if (s) setTimeout(() => s.classList.add('hide'), 650);
 }
 hideSplash();
+
+// Установка PWA: браузер сам покажет возможность установки, когда выполнены его условия.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
 
 render();
 updateCart();
