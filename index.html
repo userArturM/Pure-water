@@ -50,7 +50,7 @@ section{padding:105px 0}.section-head{display:flex;justify-content:space-between
 .qty-step button{width:35px;height:39px;border:0;background:transparent;color:#fff;font-size:17px;cursor:pointer}
 .qty-step button:hover{background:rgba(255,255,255,.15)}
 .qty-step b{min-width:25px;text-align:center;font-size:11px}
-/* Дополнительные данные заказа */
+/* Данные заказа */
 .order-extra{display:grid;grid-column:1/-1;grid-row:2;grid-template-columns:minmax(180px,1.3fr) minmax(150px,.8fr) minmax(180px,1.3fr);gap:8px;width:100%;min-width:0}
 .order-extra input,.order-extra select{width:100%;min-height:38px;border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:0 11px;background:#fff;color:#222;font:inherit;font-size:11px;outline:none}
 .order-extra input:focus,.order-extra select:focus{border-color:#999;box-shadow:0 0 0 2px rgba(0,0,0,.06)}
@@ -168,7 +168,8 @@ footer{background:#021321;color:#6f8794;padding:24px 0;font-size:10px}.footer-in
       <option value="Наличными при получении">Наличными при получении</option>
       <option value="Переводом">Переводом</option>
     </select>
-    <input id="orderComment" type="text" placeholder="Ваш комментарий к заказу" aria-label="Комментарий к заказу">
+    <input id="orderPhone" type="tel" placeholder="Номер телефона" autocomplete="tel" aria-label="Номер телефона">
+    <input id="orderComment" type="text" placeholder="Комментарий (необязательно)" aria-label="Комментарий (необязательно)">
   </div>
   <div class="messenger-actions">
     <a class="msg-order msg-wa" id="waOrder" href="#" target="_blank" rel="noopener noreferrer" aria-label="Заказать через WhatsApp">
@@ -211,7 +212,7 @@ const cartTotal=document.getElementById('cartTotal');
 const cartList=document.getElementById('cartList');
 const orderAddress=document.getElementById('orderAddress');
 const orderPayment=document.getElementById('orderPayment');
-const orderComment=document.getElementById('orderComment');
+const orderPhone=document.getElementById('orderPhone');
 const waOrder=document.getElementById('waOrder');
 const tgOrder=document.getElementById('tgOrder');
 const maxOrder=document.getElementById('maxOrder');
@@ -262,14 +263,26 @@ function updateCart(){
   const receive=mode==='delivery'?'доставка':'самовывоз';
   const address=orderAddress.value.trim();
   const payment=orderPayment.value;
+  const phoneNumber=orderPhone.value.trim();
   const comment=orderComment.value.trim();
 
   const lines=[
-    `Здравствуйте! Хочу заказать доставку:`,
-    `${list.join(', ')}.`,
-    `Итого: ${money(total)}`
+    `Здравствуйте! Хочу заказать доставку:`
   ];
+
+  let itemNumber=0;
+  waters.forEach((w,i)=>{
+    const q=qty[i]||0;
+    if(q){
+      itemNumber++;
+      const price=mode==='delivery'?w[4]:w[5];
+      lines.push(`_${itemNumber}. ${w[1]} - ${q}×${price}=${q*price}_`);
+    }
+  });
+
+  lines.push(`*   Итого: ${money(total)}*`);
   if(address) lines.push(`Адрес доставки: ${address}`);
+  if(phoneNumber) lines.push(`Номер телефона: ${phoneNumber}`);
   if(payment) lines.push(`Способ оплаты: ${payment}`);
   if(comment) lines.push(`Комментарий: ${comment}`);
 
@@ -278,6 +291,8 @@ function updateCart(){
   const needsAddress = receive === 'доставка';
   orderAddress.required = needsAddress;
   orderAddress.placeholder = needsAddress ? 'Адрес доставки *' : 'Адрес / примечание (необязательно)';
+  orderPhone.required = needsAddress;
+  orderPhone.placeholder = needsAddress ? 'Номер телефона *' : 'Номер телефона';
   
   // Один и тот же готовый заказ передаём во все три мессенджера.
   // Номер берём тот же, что указан на сайте: +7 928 223-53-33.
@@ -329,7 +344,7 @@ function observe(els){
 observe(document.querySelectorAll('.reveal'));
 render();
 updateCart();
-[orderAddress, orderPayment, orderComment].forEach(el=>{
+[orderAddress, orderPayment, orderPhone, orderComment].forEach(el=>{
   el.addEventListener('input', updateCart);
   el.addEventListener('change', updateCart);
 });
@@ -340,6 +355,12 @@ updateCart();
       e.preventDefault();
       orderAddress.focus();
       alert('Укажите адрес доставки.');
+      return;
+    }
+    if(mode==='delivery' && !orderPhone.value.trim()){
+      e.preventDefault();
+      orderPhone.focus();
+      alert('Укажите номер телефона.');
     }
   });
 });
