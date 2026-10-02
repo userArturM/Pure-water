@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#031a2d">
 <meta name="format-detection" content="telephone=yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Чистая вода">
+<meta name="application-name" content="Чистая вода">
+<meta name="msapplication-TileColor" content="#031a2d">
+
 <title>Доставка воды 19 л в Пластуновской — чистая вода рядом</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
 <link rel="apple-touch-icon" href="assets/logo.png">
@@ -669,6 +676,141 @@ footer strong{color:#fff}
   .cart-fab{display:none!important}
   .cart-fab.has-items{display:flex!important}
 }
+
+/* ===== UX / CONVERSION ENHANCEMENTS ===== */
+.catalog-info{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  margin:-8px 0 22px;padding:12px 16px;border:1px solid var(--line);
+  border-radius:14px;background:#f7fbfd;color:var(--muted);font-size:12px;font-weight:700;
+}
+.delivery-live{display:flex;align-items:center;gap:8px}
+.delivery-live:before{
+  content:"";width:8px;height:8px;border-radius:50%;background:#28b86b;
+  box-shadow:0 0 0 5px rgba(40,184,107,.12);animation:liveDot 1.8s infinite;
+}
+.store-address{
+  display:none;align-items:center;gap:8px;padding:10px 13px;border-radius:12px;
+  background:#eaf7fb;color:#12637b;font-size:12px;font-weight:800;
+}
+.store-address.show{display:flex}
+.price-caption{
+  display:block;margin-top:2px;font-size:10px;color:#6e8798;font-weight:700;
+  transition:opacity .2s,transform .2s;
+}
+.price-caption.pulse-caption{animation:captionPulse .45s var(--ease)}
+.price-wrap{min-width:0}
+.price{color:#032a45}
+.card .badge.badge-hit{background:#dff7eb;color:#157047}
+.card .badge.badge-deal{background:#fff0d8;color:#9a5b00}
+.combo{
+  margin-top:30px;padding:22px;border-radius:22px;
+  background:linear-gradient(135deg,#f0f9fc,#fff);border:1px solid var(--line);
+}
+.combo-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:16px}
+.combo h3{font-size:20px;font-weight:800}
+.combo p{font-size:12px;color:var(--muted)}
+.combo-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.combo-item{
+  display:flex;align-items:center;gap:10px;padding:12px;border-radius:14px;
+  background:#fff;border:1px solid var(--line);font-size:12px;font-weight:800;
+}
+.combo-item img{width:42px;height:42px;object-fit:contain;background:#f4fafc;border-radius:10px}
+.social-proof{background:#fff}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.review{
+  background:#f6fafc;border:1px solid var(--line);border-radius:20px;padding:22px;
+}
+.review-stars{color:#f2a52b;letter-spacing:2px;font-size:12px;margin-bottom:10px}
+.review p{font-size:13px;line-height:1.65;color:#506b7b;margin-bottom:14px}
+.review b{font-size:12px}
+.faq{background:var(--ice)}
+.faq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.faq-item{
+  background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;
+}
+.faq-item summary{cursor:pointer;font-size:14px;font-weight:800;list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item p{padding-top:10px;font-size:12px;line-height:1.6;color:var(--muted)}
+.trust-row{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;
+}
+.trust-pill{
+  display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:99px;
+  background:#eef8fb;color:#155c72;font-size:11px;font-weight:800;
+}
+.cart-clear{
+  display:none;margin:0 0 10px;color:#b64b4b;font-size:12px;font-weight:800;
+  text-align:right;
+}
+.cart-clear.show{display:block}
+.cart-qty{
+  display:inline-flex;align-items:center;gap:0;margin-top:6px;border-radius:10px;
+  overflow:hidden;background:#edf4f7;
+}
+.cart-qty button{width:28px;height:28px;color:var(--ink);font-size:17px;font-weight:800}
+.cart-qty b{min-width:28px;text-align:center;font-size:12px}
+.order-phone-wrap{position:relative}
+.phone-hint{font-size:10px;color:var(--muted);margin-top:5px}
+.order-success{
+  position:fixed;inset:0;z-index:100;background:rgba(2,21,37,.72);backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;
+  pointer-events:none;transition:opacity .3s;
+}
+.order-success.show{opacity:1;pointer-events:auto}
+.success-card{
+  width:min(430px,100%);background:#fff;border-radius:28px;padding:34px 26px;text-align:center;
+  box-shadow:0 30px 90px rgba(0,0,0,.3)
+}
+.success-icon{
+  width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 18px;background:#e3f8ec;color:#169453;font-size:30px;font-weight:900
+}
+.success-card h3{font-size:24px;margin-bottom:8px}
+.success-card p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+.success-actions{display:flex;gap:9px;justify-content:center}
+.success-actions a,.success-actions button{
+  min-height:48px;padding:0 18px;border-radius:13px;font-size:12px;font-weight:800
+}
+.success-call{background:var(--deep);color:#fff}
+.success-close{background:#edf4f7;color:var(--ink)}
+.splash{
+  position:fixed;inset:0;z-index:110;background:linear-gradient(155deg,#021525,#0a7fad);
+  display:flex;align-items:center;justify-content:center;color:#fff;transition:opacity .45s;
+}
+.splash.hide{opacity:0;pointer-events:none}
+.splash-inner{text-align:center}
+.splash-logo{width:82px;height:82px;border-radius:22px;object-fit:contain;margin:0 auto 18px}
+.splash-inner b{display:block;font-size:18px}
+.splash-inner span{font-size:10px;letter-spacing:2px;opacity:.65;text-transform:uppercase}
+.mobile-actions{
+  display:none;position:fixed;right:16px;bottom:16px;z-index:46;gap:8px;align-items:center;
+}
+.call-fab{
+  width:56px;height:56px;border-radius:50%;background:#25a866;color:#fff;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 14px 35px rgba(0,0,0,.25)
+}
+.call-fab svg{width:22px;fill:currentColor}
+@keyframes liveDot{50%{transform:scale(.7);opacity:.55}}
+@keyframes captionPulse{40%{transform:translateY(-2px);opacity:.4}100%{transform:none;opacity:1}}
+
+@media(max-width:600px){
+  #cartFab{display:none!important}
+  .catalog-info{align-items:flex-start;flex-direction:column;gap:9px}
+  .store-address{width:100%}
+  .combo-list{grid-template-columns:1fr}
+  .combo{padding:17px}
+  .reviews-grid,.faq-grid{grid-template-columns:1fr}
+  .mobile-actions{display:flex}
+  .cart-fab{position:relative;right:auto;bottom:auto;width:56px;height:56px}
+  .cart-fab.has-items{display:flex}
+  .price{font-size:22px;font-weight:900}
+  .price-caption{font-size:9px}
+  .success-actions{flex-direction:column}
+}
+@media(min-width:601px){
+  .mobile-actions{display:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -743,6 +885,11 @@ footer strong{color:#fff}
       <p>Популярные бренды в одном месте. Цена меняется при переключении способа покупки.</p>
     </div>
 
+    <div class="catalog-info">
+      <div class="delivery-live">Сегодня доставляем до <span id="deliveryUntil">20:00</span></div>
+      <div class="store-address" id="storeAddress">📍 Станция Пластуновская, ул. Красная, 250</div>
+    </div>
+
     <div class="controls reveal">
       <div class="switch" id="modeSwitch">
         <button class="active" data-mode="delivery">🚚 Доставка</button>
@@ -756,6 +903,20 @@ footer strong{color:#fff}
     </div>
 
     <div class="grid" id="grid"></div>
+
+    <div class="combo reveal">
+      <div class="combo-head">
+        <div>
+          <h3>Часто берут вместе</h3>
+          <p>Вода + помпа + тара — всё для заказа сразу.</p>
+        </div>
+      </div>
+      <div class="combo-list">
+        <div class="combo-item"><img src="assets/water/kristalnaya.png" alt="">Кристальная 19 л</div>
+        <div class="combo-item"><img src="assets/water/pompa.png" alt="">Помпа</div>
+        <div class="combo-item"><img src="assets/tara.png" alt="">Бутыль тара</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -812,6 +973,41 @@ footer strong{color:#fff}
         <h3>Забота о клиентах</h3>
         <p>Минимум лишних шагов — максимум понятной информации.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="social-proof">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><span class="eyebrow">Отзывы</span><h2>Что говорят<br>клиенты</h2></div>
+      <p>Короткие отзывы для ориентира перед заказом.</p>
+    </div>
+    <div class="reviews-grid">
+      <article class="review reveal"><div class="review-stars">★★★★★</div><p>«Всё понятно: выбрал воду, указал адрес — заказ оформляется быстро.»</p><b>Алексей</b></article>
+      <article class="review reveal delay1"><div class="review-stars">★★★★★</div><p>«Удобно, что можно выбрать доставку или самовывоз и сразу увидеть цену.»</p><b>Марина</b></article>
+      <article class="review reveal delay2"><div class="review-stars">★★★★★</div><p>«Заказываю воду домой. Корзина и количество теперь очень удобные.»</p><b>Сергей</b></article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><span class="eyebrow">FAQ</span><h2>Частые<br>вопросы</h2></div>
+      <p>Основная информация перед оформлением заказа.</p>
+    </div>
+    <div class="faq-grid">
+      <details class="faq-item reveal" open><summary>💧 Залог тары</summary><p>Условия залога тары лучше уточнить у оператора при оформлении заказа.</p></details>
+      <details class="faq-item reveal delay1"><summary>🚚 Сроки доставки</summary><p>На сайте указано: доставка в день заказа. Точное время подтверждает оператор.</p></details>
+      <details class="faq-item reveal delay2"><summary>📍 Зона доставки</summary><p>Если сомневаетесь, укажите адрес — оператор подтвердит возможность доставки.</p></details>
+    </div>
+    <div class="trust-row reveal">
+      <span class="trust-pill">💳 Оплата при получении</span>
+      <span class="trust-pill">✓ Без предоплаты</span>
+      <span class="trust-pill">📞 Подтверждение заказа оператором</span>
     </div>
   </div>
 </section>
@@ -907,6 +1103,7 @@ footer strong{color:#fff}
   <div class="cart-body">
     <!-- Step 1: products -->
     <div id="cartStepProducts">
+      <button class="cart-clear" id="cartClear" type="button">Очистить корзину</button>
       <div id="cartProducts"></div>
       <div class="cart-summary"><span>Итого</span><b id="cartTotal">0 ₽</b></div>
       <button class="cart-next-btn" id="cartNext" type="button">Далее →</button>
@@ -936,9 +1133,10 @@ footer strong{color:#fff}
             <option value="Переводом">Переводом</option>
           </select>
         </div>
-        <div class="order-field">
+        <div class="order-field order-phone-wrap">
           <label for="orderPhone">Номер телефона</label>
-          <input id="orderPhone" type="tel" placeholder="+7 ___ ___-__-__" autocomplete="tel">
+          <input id="orderPhone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" maxlength="18">
+          <div class="phone-hint">Формат: +7 (999) 123-45-67</div>
         </div>
         <div class="order-field">
           <label for="orderComment">Комментарий <span>(необязательно)</span></label>
@@ -960,6 +1158,36 @@ footer strong{color:#fff}
         </a>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="mobile-actions" aria-label="Быстрые действия">
+  <a class="call-fab" href="tel:+79282235333" aria-label="Позвонить">
+    <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.9 15.9 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.1 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1z"/></svg>
+  </a>
+  <button class="cart-fab" id="cartFabMobile" aria-label="Открыть корзину">
+    <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M6 6L5 3H2"/></svg>
+    <span class="fab-count" id="fabCountMobile">0</span>
+  </button>
+</div>
+
+<div class="order-success" id="orderSuccess">
+  <div class="success-card">
+    <div class="success-icon">✓</div>
+    <h3>Заказ отправлен</h3>
+    <p>Открылся WhatsApp с готовым сообщением. После отправки заказа можно сразу связаться с нами по телефону.</p>
+    <div class="success-actions">
+      <a class="success-call" href="tel:+79282235333">Позвонить</a>
+      <button class="success-close" id="successClose" type="button">Вернуться на сайт</button>
+    </div>
+  </div>
+</div>
+
+<div class="splash" id="splash" aria-hidden="true">
+  <div class="splash-inner">
+    <img class="splash-logo" src="assets/logo.png" alt="">
+    <b>Чистая вода</b>
+    <span>доставка 19 л</span>
   </div>
 </div>
 
@@ -998,6 +1226,13 @@ const cartPanel = document.getElementById('cartPanel');
 const cartBackdrop = document.getElementById('cartBackdrop');
 const cartFab = document.getElementById('cartFab');
 const fabCount = document.getElementById('fabCount');
+const cartClear = document.getElementById('cartClear');
+const storeAddress = document.getElementById('storeAddress');
+const deliveryUntil = document.getElementById('deliveryUntil');
+const cartFabMobile = document.getElementById('cartFabMobile');
+const fabCountMobile = document.getElementById('fabCountMobile');
+const orderSuccess = document.getElementById('orderSuccess');
+const successClose = document.getElementById('successClose');
 const cartTotal = document.getElementById('cartTotal');
 const cartProducts = document.getElementById('cartProducts');
 const cartStepProducts = document.getElementById('cartStepProducts');
@@ -1025,6 +1260,7 @@ function saveState() {
       name: orderName.value,
       address: orderAddress.value,
       phone: orderPhone.value,
+      date: orderDate.value,
       payment: orderPayment.value,
       comment: orderComment.value
     }));
@@ -1040,8 +1276,6 @@ function toast(msg) {
 }
 
 function control(i) {
-  // В режиме «Самовывоз» кнопка «Добавить» не показывается — только цены.
-  if (mode === 'store') return '';
   const q = qty[i] || 0;
   return q
     ? `<span class="qty-step"><button type="button" data-cart="minus" data-i="${i}" aria-label="Уменьшить">−</button><b>${q}</b><button type="button" data-cart="plus" data-i="${i}" aria-label="Увеличить">+</button></span>`
@@ -1060,11 +1294,16 @@ function render() {
       <div class="card-body">
         <div class="card-top">
           <h3>${w[1]}</h3>
-          ${isWater(w) && w[6] ? `<span class="badge">${w[6]} л</span>` : ''}
+          ${i === 1 ? `<span class="badge badge-hit">Хит</span>` :
+            i === 0 ? `<span class="badge badge-deal">Выгодная цена</span>` :
+            (isWater(w) && w[6] ? `<span class="badge">${w[6]} л</span>` : '')}
         </div>
         <div class="desc">${w[2]}</div>
         <div class="buy">
-          <strong class="price">${money(mode === 'delivery' ? w[4] : w[5])}</strong>
+          <div class="price-wrap">
+            <strong class="price">${money(mode === 'delivery' ? w[4] : w[5])}</strong>
+            <span class="price-caption">${mode === 'delivery' ? 'цена с доставкой' : 'цена в магазине'}</span>
+          </div>
           <span id="cart-control-${i}">${control(i)}</span>
         </div>
       </div>
@@ -1102,7 +1341,12 @@ function updateCart() {
             <img class="cart-product-thumb" src="${w[3]}" alt="" onerror="this.style.display='none'">
             <div class="cart-product-main">
               <b>${w[1]}</b>
-              <span>${q} шт. × ${money(price)}</span>
+              <span>${money(price)} / шт.</span>
+              <span class="cart-qty">
+                <button type="button" data-cart="minus" data-i="${i}" aria-label="Уменьшить">−</button>
+                <b>${q}</b>
+                <button type="button" data-cart="plus" data-i="${i}" aria-label="Увеличить">+</button>
+              </span>
             </div>
           </div>
           <div class="cart-product-right">
@@ -1117,8 +1361,16 @@ function updateCart() {
 
   const itemCount = Object.values(qty).reduce((s, v) => s + (Number(v) || 0), 0);
   cartFab.classList.toggle('has-items', total > 0);
-  fabCount.textContent = itemCount > 99 ? '99+' : String(itemCount);
+  if (cartFabMobile) cartFabMobile.classList.toggle('has-items', total > 0);
+  const countText = itemCount > 99 ? '99+' : String(itemCount);
+  fabCount.textContent = countText;
+  if (fabCountMobile) fabCountMobile.textContent = countText;
   cartTotal.textContent = money(total);
+  if (cartClear) cartClear.classList.toggle('show', total > 0);
+  if (storeAddress) storeAddress.classList.toggle('show', mode === 'store');
+  document.querySelectorAll('.price-caption').forEach(p => {
+    p.textContent = mode === 'delivery' ? 'цена с доставкой' : 'цена в магазине';
+  });
   detailsTotal.textContent = money(total);
   cartProducts.innerHTML = productHtml.length
     ? productHtml.join('')
@@ -1221,10 +1473,10 @@ document.querySelectorAll('#modeSwitch button').forEach(btn => {
     mode = btn.dataset.mode;
     render();
     updateCart();
-    document.querySelectorAll('.price').forEach(p => {
-      p.classList.remove('pulse');
+    document.querySelectorAll('.price,.price-caption').forEach(p => {
+      p.classList.remove('pulse','pulse-caption');
       void p.offsetWidth;
-      p.classList.add('pulse');
+      p.classList.add(p.classList.contains('price-caption') ? 'pulse-caption' : 'pulse');
     });
   });
 });
@@ -1272,7 +1524,8 @@ orderDate.addEventListener('click', () => {
 
 orderName.value = saved.name || '';
 orderAddress.value = saved.address || '';
-orderPhone.value = saved.phone || '';
+orderPhone.value = formatPhone(saved.phone || '');
+orderDate.value = saved.date || '';
 orderPayment.value = saved.payment || '';
 orderComment.value = saved.comment || '';
 
@@ -1282,6 +1535,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCart();
 
 [orderName, orderAddress, orderDate, orderPayment, orderPhone, orderComment].forEach(el => {
   el.addEventListener('input', () => { el.style.borderColor = ''; updateCart(); });
+
   el.addEventListener('change', updateCart);
 });
 
@@ -1295,6 +1549,9 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCart();
     if (mode === 'delivery' || orderPhone.value.trim()) {
       if (orderPhone.value.replace(/\D/g, '').length < 10) return bad(orderPhone, 'Укажите телефон (не меньше 10 цифр)');
     }
+    if (link === waOrder) {
+      setTimeout(showSuccess, 450);
+    }
     if (link !== waOrder) {
       try {
         navigator.clipboard.writeText(window.__orderText)
@@ -1304,6 +1561,56 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCart();
     }
   });
 });
+
+
+function updateDeliveryClock() {
+  const now = new Date();
+  const end = new Date(now);
+  end.setHours(20,0,0,0);
+  if (now >= end) {
+    deliveryUntil.textContent = 'завтра с 09:00';
+    deliveryUntil.parentElement.childNodes[0].textContent = 'Следующую доставку оформляем ';
+  } else {
+    deliveryUntil.textContent = '20:00';
+  }
+}
+updateDeliveryClock();
+setInterval(updateDeliveryClock, 30000);
+
+function formatPhone(value) {
+  let d = String(value || '').replace(/\D/g,'');
+  if (d.startsWith('8')) d = '7' + d.slice(1);
+  if (!d.startsWith('7')) d = '7' + d;
+  d = d.slice(0,11);
+  let s = '+7';
+  if (d.length > 1) s += ' (' + d.slice(1,4);
+  if (d.length >= 4) s += ') ' + d.slice(4,7);
+  if (d.length >= 7) s += '-' + d.slice(7,9);
+  if (d.length >= 9) s += '-' + d.slice(9,11);
+  return s;
+}
+orderPhone.addEventListener('input', () => {
+  orderPhone.value = formatPhone(orderPhone.value);
+  orderPhone.style.borderColor = '';
+  updateCart();
+});
+
+if (cartFabMobile) cartFabMobile.addEventListener('click', openCart);
+if (cartClear) cartClear.addEventListener('click', () => {
+  Object.keys(qty).forEach(k => qty[k] = 0);
+  updateCart();
+  toast('Корзина очищена');
+});
+if (successClose) successClose.addEventListener('click', () => orderSuccess.classList.remove('show'));
+
+function showSuccess() {
+  orderSuccess.classList.add('show');
+}
+function hideSplash() {
+  const s = document.getElementById('splash');
+  if (s) setTimeout(() => s.classList.add('hide'), 650);
+}
+hideSplash();
 
 render();
 updateCart();
