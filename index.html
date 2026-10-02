@@ -145,6 +145,16 @@ footer{background:#021321;color:#6f8794;padding:24px 0;font-size:10px}.footer-in
   .cart-bar.on{transform:translateY(110%)!important}
   .cart-bar.on.open{transform:translateY(0)!important}
 }
+
+/* Корзина: сначала товары, затем данные доставки */
+.cart-step[hidden]{display:none!important}
+.cart-products{display:flex;flex-direction:column;gap:8px;max-height:45vh;overflow:auto;margin:2px 0 14px}
+.cart-product{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 13px;border:1px solid #e4edf1;border-radius:13px;background:#f8fbfc}
+.cart-product-main{display:flex;flex-direction:column;gap:4px;min-width:0}.cart-product-main b{font-size:12px}.cart-product-main span{font-size:10px;color:#708896}.cart-product>strong{font-size:13px;white-space:nowrap}
+.cart-summary{display:flex;align-items:center;justify-content:space-between;padding:12px 2px 14px;border-top:1px solid #e5edf1}.cart-summary span{font-size:12px;color:#6c8491}.cart-summary b{font-size:20px}
+.cart-next{width:100%;height:48px;border:0;border-radius:13px;background:#087eac;color:#fff;font:800 13px Manrope;cursor:pointer;transition:.25s}.cart-next:hover{background:#062f49;transform:translateY(-1px)}.cart-next:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.cart-back{border:0;background:transparent;color:#087eac;font:800 11px Manrope;padding:2px 0 12px;cursor:pointer}.details-total{font-size:11px;color:#6c8491;padding-bottom:14px}.details-total b{color:#082238;font-size:16px}
+@media(max-width:800px){.cart-products{max-height:42vh}.cart-product{padding:12px}.cart-product-main b{font-size:13px}.cart-product-main span{font-size:11px}.cart-product>strong{font-size:14px}.cart-summary{padding-top:13px}.cart-next{height:52px;font-size:14px}.details-total{padding-bottom:13px}.cart-bar{max-height:90vh}}
 </style>
 </head>
 <body>
@@ -203,50 +213,54 @@ footer{background:#021321;color:#6f8794;padding:24px 0;font-size:10px}.footer-in
 </button>
 <div class="cart-backdrop" id="cartBackdrop"></div>
 <div class="cart-bar" id="cartBar" role="dialog" aria-modal="true" aria-label="Ваш заказ">
-  <div class="cart-title"><span>Ваша корзина</span><button class="cart-close" id="cartClose" type="button" aria-label="Закрыть корзину">×</button></div>
-  <div class="cart-info">
-    <b class="cart-total" id="cartTotal">0 ₽</b>
-    <span class="cart-list" id="cartList"></span>
+  <div class="cart-title"><span id="cartStepTitle">Ваша корзина</span><button class="cart-close" id="cartClose" type="button" aria-label="Закрыть корзину">×</button></div>
+
+  <div class="cart-step cart-step-products" id="cartStepProducts">
+    <div class="cart-products" id="cartProducts"></div>
+    <div class="cart-summary"><span>Итого</span><b id="cartTotal">0 ₽</b></div>
+    <button class="cart-next" id="cartNext" type="button">Далее</button>
   </div>
-  <div class="order-extra">
-    <div class="order-field address-field">
-      <label for="orderAddress">Адрес доставки</label>
-      <input id="orderAddress" type="text" placeholder="Введите адрес" autocomplete="street-address" aria-label="Адрес доставки">
+
+  <div class="cart-step cart-step-details" id="cartStepDetails" hidden>
+    <button class="cart-back" id="cartBack" type="button">← Назад</button>
+    <div class="details-total">Ваш заказ: <b id="detailsTotal">0 ₽</b></div>
+    <div class="order-extra">
+      <div class="order-field address-field">
+        <label for="orderAddress">Адрес доставки</label>
+        <input id="orderAddress" type="text" placeholder="Введите адрес" autocomplete="street-address" aria-label="Адрес доставки">
+      </div>
+      <div class="order-field">
+        <label for="orderDate">Дата доставки</label>
+        <input id="orderDate" type="date" aria-label="Дата доставки" title="Нажмите, чтобы выбрать дату доставки">
+      </div>
+      <div class="order-field">
+        <label for="orderPayment">Способ оплаты</label>
+        <select id="orderPayment" aria-label="Способ оплаты">
+          <option value="">Выберите способ оплаты</option>
+          <option value="Наличными при получении">Наличными при получении</option>
+          <option value="Переводом">Переводом</option>
+        </select>
+      </div>
+      <div class="order-field">
+        <label for="orderPhone">Номер телефона</label>
+        <input id="orderPhone" type="tel" placeholder="Введите номер телефона" autocomplete="tel" aria-label="Номер телефона">
+      </div>
+      <div class="order-field comment-field">
+        <label for="orderComment">Комментарий <span>(необязательно)</span></label>
+        <input id="orderComment" type="text" placeholder="Ваш комментарий" aria-label="Комментарий (необязательно)">
+      </div>
     </div>
-    <div class="order-field">
-      <label for="orderDate">Дата доставки</label>
-      <input id="orderDate" type="date" aria-label="Дата доставки" title="Нажмите, чтобы выбрать дату доставки">
+    <div class="messenger-actions">
+      <a class="msg-order msg-wa" id="waOrder" href="#" target="_blank" rel="noopener noreferrer" aria-label="Заказать через WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.7 6L.2 24l6.3-1.7c1.7.9 3.6 1.3 5.6 1.3h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.3-6.1-3.5-8.3ZM12.1 21.5c-1.8 0-3.5-.5-5-1.3l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2C2.3 6.4 6.7 2 12.1 2s9.8 4.4 9.8 9.8-4.4 9.7-9.8 9.7Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.5-.7-2.5-1.2-3.5-2.8-.3-.5.3-.5.9-1.7.1-.2 0-.4-.1-.5-.1-.2-.7-1.7-1-2.1-.3-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.9 3.4.8.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z"/></svg>WhatsApp
+      </a>
+      <a class="msg-order msg-tg" id="tgOrder" href="#" target="_blank" rel="noopener noreferrer" aria-label="Заказать через Telegram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 3.2 18.5 20c-.3 1.2-1 1.5-2 .9l-5.5-4.1-2.7 2.6c-.3.3-.5.5-1 .5l.4-5.6 10.2-9.2c.4-.4-.1-.6-.6-.2L4.7 12.7l-5.5-1.7c-1.2-.4-1.2-1.2.2-1.7L20.8 1.8c1-.4 1.8.2 1.1 1.4Z"/></svg>Telegram
+      </a>
+      <a class="msg-order msg-max" id="maxOrder" href="#" target="_blank" rel="noopener noreferrer" aria-label="Заказать через MAX">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.37 1.1 4.52 3.02 6.2L4 22l4.28-2.1c1.16.37 2.4.57 3.72.57 5.52 0 10-4.03 10-9.47S17.52 2 12 2z"/></svg>MAX
+      </a>
     </div>
-    <div class="order-field">
-      <label for="orderPayment">Способ оплаты</label>
-      <select id="orderPayment" aria-label="Способ оплаты">
-        <option value="">Выберите способ оплаты</option>
-        <option value="Наличными при получении">Наличными при получении</option>
-        <option value="Переводом">Переводом</option>
-      </select>
-    </div>
-    <div class="order-field">
-      <label for="orderPhone">Номер телефона</label>
-      <input id="orderPhone" type="tel" placeholder="Введите номер телефона" autocomplete="tel" aria-label="Номер телефона">
-    </div>
-    <div class="order-field comment-field">
-      <label for="orderComment">Комментарий <span>(необязательно)</span></label>
-      <input id="orderComment" type="text" placeholder="Ваш комментарий" aria-label="Комментарий (необязательно)">
-    </div>
-  </div>
-  <div class="messenger-actions">
-    <a class="msg-order msg-wa" id="waOrder" href="#" target="_blank" rel="noopener noreferrer" aria-label="Заказать через WhatsApp">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.7 6L.2 24l6.3-1.7c1.7.9 3.6 1.3 5.6 1.3h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.3-6.1-3.5-8.3ZM12.1 21.5c-1.8 0-3.5-.5-5-1.3l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2C2.3 6.4 6.7 2 12.1 2s9.8 4.4 9.8 9.8-4.4 9.7-9.8 9.7Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.5-.7-2.5-1.2-3.5-2.8-.3-.5.3-.5.9-1.7.1-.2 0-.4-.1-.5-.1-.2-.7-1.7-1-2.1-.3-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.9 3.4.8.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z"/></svg>
-      WhatsApp
-    </a>
-    <a class="msg-order msg-tg" id="tgOrder" href="#" target="_blank" rel="noopener noreferrer" aria-label="Заказать через Telegram">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 3.2 18.5 20c-.3 1.2-1 1.5-2 .9l-5.5-4.1-2.7 2.6c-.3.3-.5.5-1 .5l.4-5.6 10.2-9.2c.4-.4-.1-.6-.6-.2L4.7 12.7l-5.5-1.7c-1.2-.4-1.2-1.2.2-1.7L20.8 1.8c1-.4 1.8.2 1.1 1.4Z"/></svg>
-      Telegram
-    </a>
-    <a class="msg-order msg-max" id="maxOrder" href="#" target="_blank" rel="noopener noreferrer" aria-label="Заказать через MAX">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.37 1.1 4.52 3.02 6.2L4 22l4.28-2.1c1.16.37 2.4.57 3.72.57 5.52 0 10-4.03 10-9.47S17.52 2 12 2z"/></svg>
-      MAX
-    </a>
   </div>
 </div>
 
@@ -273,6 +287,13 @@ const grid=document.getElementById('grid');
 const cartBar=document.getElementById('cartBar');
 const cartTotal=document.getElementById('cartTotal');
 const cartList=document.getElementById('cartList');
+const cartProducts=document.getElementById('cartProducts');
+const cartStepProducts=document.getElementById('cartStepProducts');
+const cartStepDetails=document.getElementById('cartStepDetails');
+const cartStepTitle=document.getElementById('cartStepTitle');
+const cartNext=document.getElementById('cartNext');
+const cartBack=document.getElementById('cartBack');
+const detailsTotal=document.getElementById('detailsTotal');
 const cartFab=document.getElementById('cartFab');
 const fabTotal=document.getElementById('fabTotal');
 const cartClose=document.getElementById('cartClose');
@@ -281,6 +302,7 @@ const orderAddress=document.getElementById('orderAddress');
 const orderPayment=document.getElementById('orderPayment');
 const orderDate=document.getElementById('orderDate');
 const orderPhone=document.getElementById('orderPhone');
+const orderComment=document.getElementById('orderComment');
 const waOrder=document.getElementById('waOrder');
 const tgOrder=document.getElementById('tgOrder');
 const maxOrder=document.getElementById('maxOrder');
@@ -314,11 +336,15 @@ function render(){
 
 function updateCart(){
   let total=0, list=[];
+  let productHtml=[];
   waters.forEach((w,i)=>{
     const q=qty[i]||0;
     if(q){
       total += q*(mode==='delivery'?w[4]:w[5]);
+      const price=mode==='delivery'?w[4]:w[5];
+      const sum=q*price;
       list.push(`${w[1]} ×${q}`);
+      productHtml.push(`<div class="cart-product"><div class="cart-product-main"><b>${w[1]}</b><span>${q} шт. × ${money(price)}</span></div><strong>${money(sum)}</strong></div>`);
     }
     const controlEl=document.getElementById(`cart-control-${i}`);
     if(controlEl) controlEl.innerHTML=control(i);
@@ -329,7 +355,10 @@ function updateCart(){
   cartFab.classList.toggle('has-items', total>0);
   fabTotal.textContent=itemCount>99?'99+':String(itemCount);
   cartTotal.textContent=money(total);
+  detailsTotal.textContent=money(total);
   cartList.textContent=list.join(', ');
+  cartProducts.innerHTML=productHtml.join('');
+  cartNext.disabled=total<=0;
 
   const receive=mode==='delivery'?'доставка':'самовывоз';
   const address=orderAddress.value.trim();
@@ -382,12 +411,31 @@ function updateCart(){
 
 cartFab.addEventListener('click',()=>{
   if(!cartBar.classList.contains('on')) return;
+  cartStepProducts.hidden=false;
+  cartStepDetails.hidden=true;
+  cartStepTitle.textContent='Ваша корзина';
   cartBar.classList.add('open');
   cartBackdrop.classList.add('open');
 });
+cartNext.addEventListener('click',()=>{
+  if(!cartBar.classList.contains('on')) return;
+  cartStepProducts.hidden=true;
+  cartStepDetails.hidden=false;
+  cartStepTitle.textContent='Данные доставки';
+  setTimeout(()=>orderAddress.focus(),120);
+});
+cartBack.addEventListener('click',()=>{
+  cartStepDetails.hidden=true;
+  cartStepProducts.hidden=false;
+  cartStepTitle.textContent='Ваша корзина';
+});
+
 function closeCart(){
   cartBar.classList.remove('open');
   cartBackdrop.classList.remove('open');
+  cartStepDetails.hidden=true;
+  cartStepProducts.hidden=false;
+  cartStepTitle.textContent='Ваша корзина';
 }
 cartClose.addEventListener('click',closeCart);
 cartBackdrop.addEventListener('click',closeCart);
