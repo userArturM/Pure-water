@@ -1034,6 +1034,8 @@ function toast(msg) {
 }
 
 function control(i) {
+  // В режиме «Самовывоз» кнопка «Добавить» не показывается — только цены.
+  if (mode === 'store') return '';
   const q = qty[i] || 0;
   return q
     ? `<span class="qty-step"><button type="button" data-cart="minus" data-i="${i}" aria-label="Уменьшить">−</button><b>${q}</b><button type="button" data-cart="plus" data-i="${i}" aria-label="Увеличить">+</button></span>`
