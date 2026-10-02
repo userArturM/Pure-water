@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#031a2d">
 <meta name="format-detection" content="telephone=yes">
-<title>Доставка воды — чистая вода рядом</title>
+<title>Доставка воды 19 л в Пластуновской — чистая вода рядом</title>
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/logo.png">
 <link rel="apple-touch-icon" href="assets/logo.png">
   
 <meta name="description" content="Доставка питьевой воды 19 литров. Выберите воду и закажите доставку в день заказа.">
+<meta property="og:title" content="Доставка питьевой воды 19 л"><meta property="og:description" content="Выберите воду, соберите корзину и отправьте заказ в WhatsApp, Telegram или MAX."><meta property="og:image" content="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -155,13 +156,37 @@ footer{background:#021321;color:#6f8794;padding:24px 0;font-size:10px}.footer-in
 .cart-next{width:100%;height:48px;border:0;border-radius:13px;background:#087eac;color:#fff;font:800 13px Manrope;cursor:pointer;transition:.25s}.cart-next:hover{background:#062f49;transform:translateY(-1px)}.cart-next:disabled{opacity:.45;cursor:not-allowed;transform:none}
 .cart-back{border:0;background:transparent;color:#087eac;font:800 11px Manrope;padding:2px 0 12px;cursor:pointer}.details-total{font-size:11px;color:#6c8491;padding-bottom:14px}.details-total b{color:#082238;font-size:16px}
 @media(max-width:800px){.cart-step-products{display:block!important}.cart-step-products[hidden]{display:none!important}.cart-products{display:flex!important;flex-direction:column!important;visibility:visible!important;opacity:1!important;height:auto!important;max-height:none!important;overflow:visible!important;padding:0!important;margin:2px 0 14px!important}.cart-product{display:flex!important;visibility:visible!important;opacity:1!important;padding:12px!important;min-height:48px!important}.cart-product-main{display:flex!important;visibility:visible!important;opacity:1!important;flex:1!important}.cart-product-main b{font-size:13px}.cart-product-main span{font-size:11px}.cart-product>strong{font-size:14px}.cart-summary{padding-top:13px}.cart-next{height:52px;font-size:14px}.details-total{padding-bottom:13px}.cart-bar{max-height:90vh;overflow-y:auto!important}}
+
+/* --- v2 --- */
+.logo-img{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:12px;padding:2px}
+#toast{display:none;position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#06263d;color:#fff;padding:12px 18px;border-radius:12px;font:700 13px Manrope;z-index:99;max-width:90%;text-align:center}
+.cart-bar:not(.open){visibility:hidden;transition:transform .35s var(--ease),visibility 0s .35s!important}
+.nav-links{font-size:13px}.nav-phone{font-size:14px}.eyebrow{font-size:11px}.desc{font-size:13px;color:#5f7686}.badge{font-size:11px}.order{font-size:12px}.add{font-size:12px}.hero-note{font-size:13px}.note{font-size:12px}.adv p,.step p{font-size:13px}.adv h3{font-size:15px}.chip{font-size:12px}.address,.footer-inner{font-size:12px}.order-field label{font-size:12px}.switch button{font-size:13px}.cart-product-main span{font-size:12px}
+#catSwitch{margin-left:0}.products .switch{margin-right:12px;display:inline-flex;vertical-align:top}
+@media(max-width:600px){.products .switch{display:flex;margin-right:0}.desc{font-size:11px}.badge{font-size:10px}.card h3{font-size:14px}.price{font-size:18px}.order,.add{font-size:11px}.adv p,.step p{font-size:12px}.adv h3{font-size:13px}.ticker span{font-size:10px}.hero-note{font-size:12px}.note{font-size:11px}.nav-phone{font-size:13px}}
+@media(min-width:801px){
+.cart-fab.has-items{display:flex!important;position:fixed;right:24px;bottom:24px;width:60px;height:60px;border-radius:50%;border:0;align-items:center;justify-content:center;background:#087eac;color:#fff;cursor:pointer;z-index:55}
+.cart-fab svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cart-fab .fab-label{display:none}
+.cart-fab .fab-total{position:absolute;right:-3px;top:-3px;min-width:22px;height:22px;padding:0 5px;border-radius:99px;background:#fff;color:#087eac;border:2px solid #087eac;font:800 11px Manrope;display:flex;align-items:center;justify-content:center}
+.cart-backdrop{display:block;position:fixed;inset:0;background:rgba(3,26,45,.42);backdrop-filter:blur(3px);z-index:53;opacity:0;pointer-events:none;transition:opacity .25s}
+.cart-backdrop.open{opacity:1;pointer-events:auto}
+.cart-bar{display:block;left:auto;right:0;top:0;bottom:0;width:min(460px,100%);height:100vh;max-height:none;border-radius:24px 0 0 24px;padding:24px;overflow-y:auto;z-index:54;transform:translateX(105%)!important}
+.cart-bar.on.open{transform:none!important}
+.cart-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;font-size:20px;font-weight:800}
+.cart-close{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:0;border-radius:10px;background:#eef5f8;font-size:22px;cursor:pointer}
+.order-extra{grid-template-columns:1fr;gap:12px}
+.order-extra input,.order-extra select{min-height:48px;font-size:14px}
+.messenger-actions{display:grid;grid-template-columns:repeat(3,1fr);margin-top:16px}
+.msg-order{font-size:12px}
+}
 </style>
 </head>
 <body>
 <div class="noise"></div>
 <header class="hero" id="top">
   <nav class="nav"><div class="container nav-inner">
-    <a class="logo" href="#top"><span class="logo-mark"></span><span>Чистая вода</span></a>
+    <a class="logo" href="#top"><img class="logo-img" src="assets/logo.png" alt="" width="40" height="40"><span>Чистая вода</span></a>
     <div class="nav-links"><a href="#water">Вода</a><a href="#about">Преимущества</a><a href="#how">Как заказать</a><a href="#route">Как проехать</a></div>
     <a class="nav-phone" href="tel:+79282235333"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.9 15.9 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1z"/></svg>+7 928 223 53 33</a>
   </div></nav>
@@ -175,7 +200,7 @@ footer{background:#021321;color:#6f8794;padding:24px 0;font-size:10px}.footer-in
     </div>
     <div class="hero-visual" aria-hidden="true">
       <div class="orb"></div><div class="rings"></div>
-      <img class="hero-bottle" src="/chistayavoda/assets/logo.png" alt="Логотип доставки воды 19 литров">
+      <img class="hero-bottle" src="assets/tara.png" alt="Бутыль для воды 19 литров">
       <span class="drop d1"></span><span class="drop d2"></span><span class="drop d3"></span>
     </div>
   </div>
@@ -185,20 +210,21 @@ footer{background:#021321;color:#6f8794;padding:24px 0;font-size:10px}.footer-in
 
 <section class="products" id="water"><div class="container">
   <div class="section-head reveal"><div><span class="eyebrow">Каталог</span><h2>Выберите<br>свою воду</h2></div><p>Собрали популярные варианты в одном месте. Цена меняется автоматически при переключении способа покупки.</p></div>
-  <div class="switch reveal"><button class="active" data-mode="delivery">🚚 Доставка</button><button data-mode="store">🏪 Самовывоз</button></div>
+  <div class="switch reveal" id="modeSwitch"><button class="active" data-mode="delivery">🚚 Доставка</button><button data-mode="store">🏪 Самовывоз</button></div>
+  <div class="switch reveal" id="catSwitch"><button class="active" data-cat="all">Всё</button><button data-cat="water">Вода</button><button data-cat="gear">Тара и помпы</button></div>
   <div class="grid" id="grid"></div>
   <div class="note reveal"><strong>Актуальные условия доставки и цены уточняйте при заказе.</strong> </div>
 </div></section>
 
 <section class="signature"><div class="container"><div class="signature-box reveal">
-  <div class="signature-copy"><span class="eyebrow">Лидер продаж</span><h2>Кристальная —<br><span>чистая вода</span></h2><p>Одна из ключевых позиций каталога, которую выбирают наши покупатели.</p><div class="chips"><span class="chip">19 литров</span><span class="chip">Без газа</span><span class="chip">Питьевая вода</span></div><a class="primary" style="margin-top:22px" href="tel:+79282235333">Заказать в один клик</a></div>
-  <div class="signature-visual"><img src="/chistayavoda/assets/water/kristalnaya.png" alt="Логотип доставки воды 19 литров"></div>
+  <div class="signature-copy"><span class="eyebrow">Лидер продаж</span><h2>Кристальная —<br><span>чистая вода</span></h2><p>Одна из ключевых позиций каталога, которую выбирают наши покупатели.</p><div class="chips"><span class="chip">19 литров</span><span class="chip">Без газа</span><span class="chip">Питьевая вода</span></div><button class="primary" type="button" style="margin-top:22px;border:0;cursor:pointer" data-cart="plus" data-i="1">Добавить в корзину</button></div>
+  <div class="signature-visual"><img src="assets/water/kristalnaya.png" alt="Вода Кристальная, 19 литров"></div>
 </div></div></section>
 
-<section class="advantages" id="about"><div class="container"><div class="section-head reveal"><div><span class="eyebrow">Почему мы</span><h2>Просто.<br>Чисто.<br>Вовремя.</h2></div><p>Делает главное очевидным: какую воду выбрать, сколько она стоит и как быстро её получить.</p></div>
-<div class="adv-grid"><div class="adv reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2.7l5.7 5.7A8 8 0 1 1 6.3 8.4z"/></svg></div><h3>Природная вода</h3><p>В ассортименте — питьевая вода из природных источников.</p></div><div class="adv reveal delay1"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5zm-1 15-4-4 1.4-1.4 2.6 2.6 5.6-5.6L18 9z"/></svg></div><h3>Контроль качества</h3><p>Поддерживаем понятный и аккуратный процесс поставки.</p></div><div class="adv reveal delay2"><div class="icon"><svg viewBox="0 0 24 24"><path d="M20 8h-3V5H7v3H4l-2 4v5h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h2v-5zM7 19.5A1.5 1.5 0 1 1 7 16a1.5 1.5 0 0 1 0 3.5m10 0a1.5 1.5 0 1 1 0-3.5 1.5 1.5 0 0 1 0 3.5M5 12l1.5-2H17v2z"/></svg></div><h3>Доставка</h3><p>Удобная доставка воды домой и в офис в день заказа.</p></div><div class="adv reveal delay3"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 21.3 10.6 20C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.6 11.5z"/></svg></div><h3>Забота о клиентах</h3><p>Минимум лишних шагов — максимум понятной информации.</p></div></div></div></section>
+<section class="advantages" id="about"><div class="container"><div class="section-head reveal"><div><span class="eyebrow">Почему мы</span><h2>Просто.<br>Чисто.<br>Вовремя.</h2></div><p>Выбор воды, цена и заказ — на одной странице.</p></div>
+<div class="adv-grid"><div class="adv reveal"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2.7l5.7 5.7A8 8 0 1 1 6.3 8.4z"/></svg></div><h3>Природная вода</h3><p>В ассортименте — питьевая вода из природных источников.</p></div><div class="adv reveal delay1"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5zm-1 15-4-4 1.4-1.4 2.6 2.6 5.6-5.6L18 9z"/></svg></div><h3>Контроль качества</h3><p>Поддерживаем понятный и аккуратный процесс поставки.</p></div><div class="adv reveal delay2"><div class="icon"><svg viewBox="0 0 24 24"><path d="M20 8h-3V5H7v3H4l-2 4v5h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h2v-5zM7 19.5A1.5 1.5 0 1 1 7 16a1.5 1.5 0 0 1 0 3.5m10 0a1.5 1.5 0 1 1 0-3.5 1.5 1.5 0 0 1 0 3.5M5 12l1.5-2H17v2z"/></svg></div><h3>Доставка</h3><p>Удобная доставка воды домой и в офис в день заказа.</p></div><div class="adv reveal delay3"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 21.3 10.6 20C5.4 15.4 2 12.3 2 8.5 2 5.4 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.4 22 8.5c0 3.8-3.4 6.9-8.6 11.5z"/></svg></div><h3>Забота о клиентах</h3><p>Заказ без регистрации: корзина и отправка в мессенджер.</p></div></div></div></section>
 
-<section class="how" id="how"><div class="container"><div class="section-head reveal"><div><span class="eyebrow">Как заказать</span><h2>Три шага<br>до воды</h2></div><p>Мы специально упростили путь от выбора до звонка.</p></div><div class="steps"><div class="step reveal"><div class="num">01</div><h3>Выберите воду</h3><p>Откройте каталог и найдите подходящую бутыль 19 литров.</p></div><div class="step reveal delay1"><div class="num">02</div><h3>Нажмите «Заказать»</h3><p>Кнопка сразу открывает звонок — без длинных форм и регистрации.</p></div><div class="step reveal delay2"><div class="num">03</div><h3>Получите доставку</h3><p>Согласуйте адрес и удобное время с оператором.</p></div></div></div></section>
+<section class="how" id="how"><div class="container"><div class="section-head reveal"><div><span class="eyebrow">Как заказать</span><h2>Три шага<br>до воды</h2></div><p>Весь путь от выбора до отправки заказа занимает пару минут.</p></div><div class="steps"><div class="step reveal"><div class="num">01</div><h3>Выберите воду</h3><p>Откройте каталог и найдите подходящую бутыль 19 литров.</p></div><div class="step reveal delay1"><div class="num">02</div><h3>Оформите заказ</h3><p>Добавьте воду в корзину и укажите адрес, дату и время. Без регистрации.</p></div><div class="step reveal delay2"><div class="num">03</div><h3>Получите доставку</h3><p>Отправьте заказ в WhatsApp, Telegram или MAX — мы его подтвердим.</p></div></div></div></section>
 
 
 <section class="route" id="route"><div class="container"><div class="route-box reveal"><div class="route-copy"><span class="eyebrow" style="color:#9beaf4">Как нас найти</span><h2>Как проехать?</h2><p>Хотите забрать воду самостоятельно? Откройте маршрут в Яндекс Картах — карта построит дорогу до нашего магазина.</p><div class="route-address">Станица Пластуновская, улица Красная, 250</div></div><a class="route-button" href="https://yandex.ru/maps/?text=Станица%20Пластуновская%2C%20улица%20Красная%2C%20250" target="_blank" rel="noopener noreferrer" aria-label="Открыть маршрут в Яндекс Картах"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>Открыть Яндекс Карты </a></div></div></section>
@@ -225,6 +251,7 @@ footer{background:#021321;color:#6f8794;padding:24px 0;font-size:10px}.footer-in
     <button class="cart-back" id="cartBack" type="button">← Назад</button>
     <div class="details-total">Ваш заказ: <b id="detailsTotal">0 ₽</b></div>
     <div class="order-extra">
+      <div class="order-field"><label for="orderName">Ваше имя</label><input id="orderName" type="text" placeholder="Как к вам обращаться" autocomplete="name"></div>
       <div class="order-field address-field">
         <label for="orderAddress">Адрес доставки</label>
         <input id="orderAddress" type="text" placeholder="Введите адрес" autocomplete="street-address" aria-label="Адрес доставки">
@@ -266,23 +293,32 @@ footer{background:#021321;color:#6f8794;padding:24px 0;font-size:10px}.footer-in
 
 <script>
 const waters=[
-  ['butyl-tara','Бутыль тара','Тара для воды','/chistayavoda/assets/tara.png',320,320,19],
- ['cristal','Кристальная','Вода питьевая «Кристальная»','/chistayavoda/assets/water/kristalnaya.png',210,155,19],
- ['kubai','Кубай','Вода питьевая «Кубай»','/chistayavoda/assets/water/kubai.png',395,345,19],
- ['dombay','Домбай','Вода питьевая «Домбай»','/chistayavoda/assets/water/dombay.png',350,300,19],
- ['chernogolovka','Черноголовка','Вода питьевая «Черноголовка»','/chistayavoda/assets/water/chernogolovka.png',320,270,19],
- ['arkhyz','Архыз','Вода питьевая «Архыз»','/chistayavoda/assets/water/arkhyz.png',385,335,19],
- ['piligrim','Пилигрим','Вода питьевая «Пилигрим»','/chistayavoda/assets/water/piligrim.png',450,400,19],
- ['mountain','Горная вершина','Вода питьевая «Горная вершина»','/chistayavoda/assets/water/gornaya-vershina.png',365,315,19],
- ['dysheps','Дышэпс','Вода питьевая «Дышэпс»','/chistayavoda/assets/water/dysheps.png',270,220,19],
- ['belaya','Белая рука','Вода питьевая «Белая рука»','/chistayavoda/assets/water/belaya-ruka.png',210,155,19],
- ['prirodny','Природный источник','Вода питьевая «Природный источник»','/chistayavoda/assets/water/prirodny-istochnik.png',177,127,10],
-  ['pompa','Помпа механическая','Классическая механическая ручная помпа','/chistayavoda/assets/water/pompa.png',420,420,19],
-  ['pompakran','Помпа механическая с краном','Классическая механическая ручная помпа с краном','/chistayavoda/assets/water/pompakran.png',465,465,19]
+  ['butyl-tara','Бутыль тара','Тара для воды','assets/tara.png',320,320,19],
+ ['cristal','Кристальная','Вода питьевая «Кристальная»','assets/water/kristalnaya.png',210,155,19],
+ ['kubai','Кубай','Вода питьевая «Кубай»','assets/water/kubai.png',395,345,19],
+ ['dombay','Домбай','Вода питьевая «Домбай»','assets/water/dombay.png',350,300,19],
+ ['chernogolovka','Черноголовка','Вода питьевая «Черноголовка»','assets/water/chernogolovka.png',320,270,19],
+ ['arkhyz','Архыз','Вода питьевая «Архыз»','assets/water/arkhyz.png',385,335,19],
+ ['piligrim','Пилигрим','Вода питьевая «Пилигрим»','assets/water/piligrim.png',450,400,19],
+ ['mountain','Горная вершина','Вода питьевая «Горная вершина»','assets/water/gornaya-vershina.png',365,315,19],
+ ['dysheps','Дышэпс','Вода питьевая «Дышэпс»','assets/water/dysheps.png',270,220,19],
+ ['belaya','Белая рука','Вода питьевая «Белая рука»','assets/water/belaya-ruka.png',210,155,19],
+ ['prirodny','Природный источник','Вода питьевая «Природный источник»','assets/water/prirodny-istochnik.png',177,127,10],
+  ['pompa','Помпа механическая','Классическая механическая ручная помпа','assets/water/pompa.png',420,420,19],
+  ['pompakran','Помпа механическая с краном','Классическая механическая ручная помпа с краном','assets/water/pompakran.png',465,465,19]
 ];
 
 let mode='delivery';
+let cat='all';
+const isWater=w=>!/^(pompa|butyl)/.test(w[0]);
+const inCat=w=>cat==='all'||(cat==='water')===isWater(w);
 const qty=Object.create(null);
+const LS='cw_order_v1';
+let saved={};try{saved=JSON.parse(localStorage.getItem(LS)||'{}')}catch(e){}
+if(saved.qty)Object.assign(qty,saved.qty);
+if(saved.mode==='store'||saved.mode==='delivery')mode=saved.mode;
+function saveState(){try{localStorage.setItem(LS,JSON.stringify({qty,mode,name:orderName.value,address:orderAddress.value,phone:orderPhone.value,payment:orderPayment.value,comment:orderComment.value}))}catch(e){}}
+function toast(msg){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.setAttribute('role','alert');document.body.appendChild(t)}t.textContent=msg;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',4500)}
 const grid=document.getElementById('grid');
 const cartBar=document.getElementById('cartBar');
 const cartTotal=document.getElementById('cartTotal');
@@ -302,6 +338,7 @@ const orderPayment=document.getElementById('orderPayment');
 const orderDate=document.getElementById('orderDate');
 const orderPhone=document.getElementById('orderPhone');
 const orderComment=document.getElementById('orderComment');
+const orderName=document.getElementById('orderName');
 const waOrder=document.getElementById('waOrder');
 const tgOrder=document.getElementById('tgOrder');
 const maxOrder=document.getElementById('maxOrder');
@@ -310,7 +347,6 @@ function money(n){return n.toLocaleString('ru-RU')+' ₽'}
 
 function control(i){
   // В режиме «В магазине» (самовывоз) кнопка «Добавить» не показывается.
-  if(mode==='store') return '';
   const q=qty[i]||0;
   return q
     ? `<span class="qty-step"><button type="button" data-cart="minus" data-i="${i}" aria-label="Уменьшить количество">−</button><b>${q}</b><button type="button" data-cart="plus" data-i="${i}" aria-label="Увеличить количество">+</button></span>`
@@ -318,11 +354,11 @@ function control(i){
 }
 
 function render(){
-  grid.innerHTML=waters.map((w,i)=>`
+  grid.innerHTML=waters.map((w,i)=>!inCat(w)?'':`
     <article class="card reveal" style="transition-delay:${(i%4)*.06}s">
-      <div class="photo"><img loading="lazy" src="${w[3]}" alt="${w[1]}, ${w[6]} литров" onerror="this.onerror=null;this.src='/chistayavoda/assets/logo.png';"></div>
+      <div class="photo"><img loading="lazy" src="${w[3]}" alt="${w[1]}${isWater(w)?', '+w[6]+' литров':''}" onerror="this.onerror=null;this.src='assets/logo.png';"></div>
       <div class="card-body">
-        <div class="card-top"><h3>${w[1]}</h3><span class="badge">${w[6]} л</span></div>
+        <div class="card-top"><h3>${w[1]}</h3>${isWater(w)?`<span class="badge">${w[6]} л</span>`:''}</div>
         <div class="desc">${w[2]}</div>
         <div class="buy">
           <strong class="price">${money(mode==='delivery'?w[4]:w[5])}</strong>
@@ -359,6 +395,8 @@ function updateCart(){
     ? '<div class="cart-products-heading">Выбранные товары</div>' + productHtml.join('')
     : '<div class="cart-empty">Товары не выбраны</div>';
   cartNext.disabled=total<=0;
+  saveState();
+  if(total<=0)closeCart();
 
   const receive=mode==='delivery'?'доставка':'самовывоз';
   const address=orderAddress.value.trim();
@@ -368,7 +406,7 @@ function updateCart(){
   const comment=orderComment.value.trim();
 
   const lines=[
-    `Здравствуйте! Хочу заказать доставку:`
+    `Здравствуйте! Хочу заказать (${receive}):`
   ];
 
   let itemNumber=0;
@@ -377,11 +415,11 @@ function updateCart(){
     if(q){
       itemNumber++;
       const price=mode==='delivery'?w[4]:w[5];
-      lines.push(`_${itemNumber}. ${w[1]} — ${q} × ${price} ₽ = ${q*price} ₽_`);
+      lines.push(`${itemNumber}. ${w[1]} — ${q} × ${price} ₽ = ${q*price} ₽`);
     }
   });
 
-  lines.push(`*Итого: ${money(total)}*`);
+  lines.push(`Итого: ${money(total)}`);
   if(address) lines.push(`Адрес доставки: ${address}`);
   if(deliveryDate){
     const [y,m,d]=deliveryDate.split('-');
@@ -389,9 +427,11 @@ function updateCart(){
   }
   if(phoneNumber) lines.push(`Номер телефона: ${phoneNumber}`);
   if(payment) lines.push(`Способ оплаты: ${payment}`);
+  if(orderName.value.trim()) lines.push(`Имя: ${orderName.value.trim()}`);
   if(comment) lines.push(`Комментарий: ${comment}`);
 
   const text=lines.join('\n');
+  window.__orderText=text;
   // Для доставки просим указать адрес. При самовывозе адрес не обязателен.
   const needsAddress = receive === 'доставка';
   orderAddress.required = needsAddress;
@@ -405,7 +445,7 @@ function updateCart(){
   // Номер берём тот же, что указан на сайте: +7 928 223-53-33.
   const phone='79282235333';
   waOrder.href='https://wa.me/'+phone+'?text='+encodeURIComponent(text);
-  tgOrder.href='https://t.me/+'+phone+'?text='+encodeURIComponent(text);
+  tgOrder.href='https://t.me/+'+phone;
   maxOrder.href='https://max.ru/:share?text='+encodeURIComponent(text);
 }
 
@@ -416,6 +456,7 @@ cartFab.addEventListener('click',()=>{
   cartStepTitle.textContent='Ваша корзина';
   cartBar.classList.add('open');
   cartBackdrop.classList.add('open');
+  document.body.style.overflow='hidden';
 });
 cartNext.addEventListener('click',()=>{
   if(!cartBar.classList.contains('on')) return;
@@ -433,6 +474,7 @@ cartBack.addEventListener('click',()=>{
 function closeCart(){
   cartBar.classList.remove('open');
   cartBackdrop.classList.remove('open');
+  document.body.style.overflow='';
   cartStepDetails.hidden=true;
   cartStepProducts.hidden=false;
   cartStepTitle.textContent='Ваша корзина';
@@ -448,9 +490,9 @@ document.addEventListener('click',e=>{
   updateCart();
 });
 
-document.querySelectorAll('.switch button').forEach(btn=>{
+document.querySelectorAll('#modeSwitch button').forEach(btn=>{
   btn.addEventListener('click',()=>{
-    document.querySelectorAll('.switch button').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('#modeSwitch button').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     mode=btn.dataset.mode;
     render();
@@ -498,35 +540,36 @@ orderDate.addEventListener('keydown', e=>{
     try{ orderDate.showPicker(); }catch(err){}
   }
 });
+orderName.value=saved.name||'';orderAddress.value=saved.address||'';orderPhone.value=saved.phone||'';orderPayment.value=saved.payment||'';orderComment.value=saved.comment||'';
+document.querySelectorAll('#modeSwitch button').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+document.querySelectorAll('#catSwitch button').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('#catSwitch button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');cat=btn.dataset.cat;render();updateCart();
+}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart()});
 render();
 updateCart();
-[orderAddress, orderDate, orderPayment, orderPhone, orderComment].forEach(el=>{
+[orderName, orderAddress, orderDate, orderPayment, orderPhone, orderComment].forEach(el=>{
+  el.addEventListener('input',()=>{el.style.borderColor=''});
   el.addEventListener('input', updateCart);
   el.addEventListener('change', updateCart);
 });
 
 [waOrder,tgOrder,maxOrder].forEach(link=>{
   link.addEventListener('click', e=>{
-    if(mode==='delivery' && !orderAddress.value.trim()){
-      e.preventDefault();
-      orderAddress.focus();
-      alert('Укажите адрес доставки.');
-      return;
+    const bad=(el,msg)=>{e.preventDefault();el.style.borderColor='#d33';el.focus();toast(msg)};
+    if(mode==='delivery'){
+      if(!orderAddress.value.trim()) return bad(orderAddress,'Укажите адрес доставки');
+      if(!orderDate.value) return bad(orderDate,'Выберите дату доставки');
     }
-    if(mode==='delivery' && !orderDate.value){
-      e.preventDefault();
-      orderDate.focus();
-      alert('Укажите дату доставки.');
-      return;
+    if(mode==='delivery'||orderPhone.value.trim()){
+      if(orderPhone.value.replace(/\D/g,'').length<10) return bad(orderPhone,'Укажите телефон: не меньше 10 цифр');
     }
-    if(mode==='delivery' && !orderPhone.value.trim()){
-      e.preventDefault();
-      orderPhone.focus();
-      alert('Укажите номер телефона.');
+    if(link!==waOrder){
+      try{navigator.clipboard.writeText(window.__orderText).then(()=>toast('Заказ скопирован. Вставьте его в чат и отправьте'),()=>toast('Скопируйте заказ вручную и отправьте в чат'))}catch(_){toast('Скопируйте заказ вручную и отправьте в чат')}
     }
   });
 });
-
 
 window.addEventListener('error', function(err){
   console.error('Site error:', err.error || err.message);
