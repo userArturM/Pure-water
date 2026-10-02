@@ -55,10 +55,16 @@ section{padding:105px 0}.section-head{display:flex;justify-content:space-between
 .qty-step button:hover{background:rgba(255,255,255,.15)}
 .qty-step b{min-width:25px;text-align:center;font-size:11px}
 /* Данные заказа */
-.order-extra{display:grid;grid-column:1/-1;grid-row:2;grid-template-columns:1.25fr .8fr 1.1fr 1.25fr;gap:9px;width:100%;min-width:0}
-.order-extra input,.order-extra select{width:100%;min-height:42px;border:1px solid #d7e1e7;border-radius:11px;padding:0 12px;background:#fff;color:#222;font:inherit;font-size:11px;outline:none}
+.order-extra{display:grid;grid-column:1/-1;grid-row:2;grid-template-columns:1.35fr 1fr 1.2fr 1.2fr 1.35fr;gap:9px;width:100%;min-width:0}
+.order-field{min-width:0;display:flex;flex-direction:column;gap:5px}
+.order-field label{font-size:9px;font-weight:800;color:#6c8491;line-height:1;white-space:nowrap}
+.order-field label span{font-weight:600;color:#9aaab2}
+.order-extra input,.order-extra select{width:100%;min-height:42px;border:1px solid #d7e1e7;border-radius:11px;padding:0 12px;background:#fff;color:#222;font:inherit;font-size:11px;outline:none;box-sizing:border-box}
 .order-extra input:focus,.order-extra select:focus{border-color:#7fb8cc;box-shadow:0 0 0 3px rgba(45,169,208,.10)}
-.order-extra input::placeholder{color:#7f909a}.order-extra input[type="date"]{cursor:pointer;color:#5f7380}.order-extra input[type="date"]:invalid{color:#7f909a}
+.order-extra input::placeholder{color:#9aaab2}.order-extra input[type="date"]{cursor:pointer;color:#344f5d;min-width:0}.order-extra input[type="date"]:invalid{color:#9aaab2}
+.cart-fab{transition:background .25s ease,transform .2s ease,box-shadow .25s ease}
+.cart-fab.has-items{background:#087eac;box-shadow:0 14px 40px rgba(8,126,172,.34)}
+.cart-fab.has-items .fab-label{color:#fff}.cart-fab:not(.has-items) .fab-label{color:rgba(255,255,255,.92)}
 .messenger-actions{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;justify-content:flex-end;min-width:0;grid-column:2;grid-row:1}
 .msg-order{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 15px;border-radius:12px;color:#fff;text-decoration:none;font-size:10px;font-weight:800;white-space:nowrap;transition:.25s}
 .msg-order:hover{transform:translateY(-2px);filter:brightness(1.06)}
@@ -83,8 +89,11 @@ section{padding:105px 0}.section-head{display:flex;justify-content:space-between
   .messenger-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:12px 0}
   .msg-order{min-height:44px;padding:0 7px;font-size:9px}
   .msg-order svg{width:15px;height:15px}
-  .order-extra{display:grid;grid-template-columns:1fr;gap:9px;margin:0}
-  .order-extra input,.order-extra select{min-height:46px;font-size:12px}
+  .order-extra{display:grid;grid-template-columns:1fr;gap:11px;margin:0}
+  .order-field{gap:5px}
+  .order-field label{font-size:10px}
+  .order-extra input,.order-extra select{min-height:50px;font-size:13px;padding:0 14px;border-radius:13px}
+  .order-extra input[type="date"]{font-size:13px}
   .cart-bar .order-extra input,.cart-bar .order-extra select{grid-column:auto}
 }
 @media(max-width:390px){
@@ -176,15 +185,30 @@ footer{background:#021321;color:#6f8794;padding:24px 0;font-size:10px}.footer-in
     <span class="cart-list" id="cartList"></span>
   </div>
   <div class="order-extra">
-    <input id="orderAddress" type="text" placeholder="Адрес доставки" autocomplete="street-address" aria-label="Адрес доставки">
-    <input id="orderDate" type="date" aria-label="Дата доставки" title="Нажмите, чтобы выбрать дату доставки">
-    <select id="orderPayment" aria-label="Способ оплаты">
-      <option value="">Способ оплаты</option>
-      <option value="Наличными при получении">Наличными при получении</option>
-      <option value="Переводом">Переводом</option>
-    </select>
-    <input id="orderPhone" type="tel" placeholder="Номер телефона" autocomplete="tel" aria-label="Номер телефона">
-    <input id="orderComment" type="text" placeholder="Комментарий (необязательно)" aria-label="Комментарий (необязательно)">
+    <div class="order-field address-field">
+      <label for="orderAddress">Адрес доставки</label>
+      <input id="orderAddress" type="text" placeholder="Введите адрес" autocomplete="street-address" aria-label="Адрес доставки">
+    </div>
+    <div class="order-field">
+      <label for="orderDate">Дата доставки</label>
+      <input id="orderDate" type="date" aria-label="Дата доставки" title="Нажмите, чтобы выбрать дату доставки">
+    </div>
+    <div class="order-field">
+      <label for="orderPayment">Способ оплаты</label>
+      <select id="orderPayment" aria-label="Способ оплаты">
+        <option value="">Выберите способ оплаты</option>
+        <option value="Наличными при получении">Наличными при получении</option>
+        <option value="Переводом">Переводом</option>
+      </select>
+    </div>
+    <div class="order-field">
+      <label for="orderPhone">Номер телефона</label>
+      <input id="orderPhone" type="tel" placeholder="Введите номер телефона" autocomplete="tel" aria-label="Номер телефона">
+    </div>
+    <div class="order-field comment-field">
+      <label for="orderComment">Комментарий <span>(необязательно)</span></label>
+      <input id="orderComment" type="text" placeholder="Ваш комментарий" aria-label="Комментарий (необязательно)">
+    </div>
   </div>
   <div class="messenger-actions">
     <a class="msg-order msg-wa" id="waOrder" href="#" target="_blank" rel="noopener noreferrer" aria-label="Заказать через WhatsApp">
@@ -280,6 +304,8 @@ function updateCart(){
   cartTotal.textContent=money(total);
   cartList.textContent=list.join(', ');
   fabTotal.textContent=money(total);
+  cartFab.classList.toggle('has-items', total>0);
+  cartFab.querySelector('.fab-label').textContent = total>0 ? 'Корзина' : 'Корзина пуста';
 
   const receive=mode==='delivery'?'доставка':'самовывоз';
   const address=orderAddress.value.trim();
