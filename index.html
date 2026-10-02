@@ -63,8 +63,8 @@ section{padding:105px 0}.section-head{display:flex;justify-content:space-between
 .order-extra input:focus,.order-extra select:focus{border-color:#7fb8cc;box-shadow:0 0 0 3px rgba(45,169,208,.10)}
 .order-extra input::placeholder{color:#9aaab2}.order-extra input[type="date"]{cursor:pointer;color:#344f5d;min-width:0}.order-extra input[type="date"]:invalid{color:#9aaab2}
 .cart-fab{transition:background .25s ease,transform .2s ease,box-shadow .25s ease}
-.cart-fab.has-items{background:#087eac;box-shadow:0 14px 40px rgba(8,126,172,.34)}
-.cart-fab.has-items .fab-label{color:#fff}.cart-fab:not(.has-items) .fab-label{color:rgba(255,255,255,.92)}
+.cart-fab.has-items{background:#087eac;color:#fff;box-shadow:0 14px 40px rgba(8,126,172,.34)}
+.cart-fab.has-items .fab-label{color:#fff}.cart-fab:not(.has-items) .fab-label{color:#31556b}.cart-fab:not(.has-items) .fab-total{color:#31556b}
 .messenger-actions{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;justify-content:flex-end;min-width:0;grid-column:2;grid-row:1}
 .msg-order{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 15px;border-radius:12px;color:#fff;text-decoration:none;font-size:10px;font-weight:800;white-space:nowrap;transition:.25s}
 .msg-order:hover{transform:translateY(-2px);filter:brightness(1.06)}
@@ -73,7 +73,7 @@ section{padding:105px 0}.section-head{display:flex;justify-content:space-between
 .msg-tg{background:#229ed9}
 .msg-max{background:#1fa855}
 @media(max-width:800px){
-  .cart-fab{position:fixed;display:flex;align-items:center;justify-content:space-between;gap:12px;left:12px;right:12px;bottom:12px;z-index:41;background:#06263d;color:#fff;border:0;border-radius:16px;padding:12px 14px;box-shadow:0 14px 40px rgba(5,48,73,.30);font:800 12px Manrope;cursor:pointer}
+  .cart-fab{position:fixed;display:flex;align-items:center;justify-content:space-between;gap:12px;left:12px;right:12px;bottom:12px;z-index:41;background:#e6f0f4;color:#082238;border:0;border-radius:16px;padding:12px 14px;box-shadow:0 14px 40px rgba(5,48,73,.30);font:800 12px Manrope;cursor:pointer}
   .cart-fab .fab-total{font-size:15px}
   .cart-fab .fab-label{opacity:.92}
   .cart-backdrop{position:fixed;inset:0;background:rgba(3,25,39,.48);backdrop-filter:blur(3px);z-index:39;opacity:0;pointer-events:none;transition:opacity .25s}
@@ -91,9 +91,9 @@ section{padding:105px 0}.section-head{display:flex;justify-content:space-between
   .msg-order svg{width:15px;height:15px}
   .order-extra{display:grid;grid-template-columns:1fr;gap:11px;margin:0}
   .order-field{gap:5px}
-  .order-field label{font-size:10px}
-  .order-extra input,.order-extra select{min-height:50px;font-size:13px;padding:0 14px;border-radius:13px}
-  .order-extra input[type="date"]{font-size:13px}
+  .order-field label{font-size:11px}
+  .order-extra input,.order-extra select{min-height:56px;height:56px;font-size:15px;padding:0 14px;border-radius:14px}.order-extra input[type="date"]{font-size:15px;min-width:0;width:100%;display:block}.order-extra select{font-size:15px;appearance:auto}
+  .order-extra input[type="date"]{font-size:15px;min-height:56px;height:56px;width:100%;}
   .cart-bar .order-extra input,.cart-bar .order-extra select{grid-column:auto}
 }
 @media(max-width:390px){
