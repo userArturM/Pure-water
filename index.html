@@ -154,7 +154,7 @@ footer{background:#021321;color:#6f8794;padding:24px 0;font-size:10px}.footer-in
 .cart-summary{display:flex;align-items:center;justify-content:space-between;padding:12px 2px 14px;border-top:1px solid #e5edf1}.cart-summary span{font-size:12px;color:#6c8491}.cart-summary b{font-size:20px}
 .cart-next{width:100%;height:48px;border:0;border-radius:13px;background:#087eac;color:#fff;font:800 13px Manrope;cursor:pointer;transition:.25s}.cart-next:hover{background:#062f49;transform:translateY(-1px)}.cart-next:disabled{opacity:.45;cursor:not-allowed;transform:none}
 .cart-back{border:0;background:transparent;color:#087eac;font:800 11px Manrope;padding:2px 0 12px;cursor:pointer}.details-total{font-size:11px;color:#6c8491;padding-bottom:14px}.details-total b{color:#082238;font-size:16px}
-@media(max-width:800px){.cart-products{max-height:42vh}.cart-product{padding:12px}.cart-product-main b{font-size:13px}.cart-product-main span{font-size:11px}.cart-product>strong{font-size:14px}.cart-summary{padding-top:13px}.cart-next{height:52px;font-size:14px}.details-total{padding-bottom:13px}.cart-bar{max-height:90vh}}
+@media(max-width:800px){.cart-step-products{display:block!important}.cart-step-products[hidden]{display:none!important}.cart-products{display:flex!important;flex-direction:column!important;visibility:visible!important;opacity:1!important;max-height:42vh;min-height:20px;overflow-y:auto;padding:0;margin:2px 0 14px}.cart-product{display:flex!important;visibility:visible!important;opacity:1!important;padding:12px}.cart-product-main{display:flex!important;visibility:visible!important;opacity:1!important}.cart-product-main b{font-size:13px}.cart-product-main span{font-size:11px}.cart-product>strong{font-size:14px}.cart-summary{padding-top:13px}.cart-next{height:52px;font-size:14px}.details-total{padding-bottom:13px}.cart-bar{max-height:90vh}}
 </style>
 </head>
 <body>
@@ -286,7 +286,6 @@ const qty=Object.create(null);
 const grid=document.getElementById('grid');
 const cartBar=document.getElementById('cartBar');
 const cartTotal=document.getElementById('cartTotal');
-const cartList=document.getElementById('cartList');
 const cartProducts=document.getElementById('cartProducts');
 const cartStepProducts=document.getElementById('cartStepProducts');
 const cartStepDetails=document.getElementById('cartStepDetails');
@@ -356,7 +355,6 @@ function updateCart(){
   fabTotal.textContent=itemCount>99?'99+':String(itemCount);
   cartTotal.textContent=money(total);
   detailsTotal.textContent=money(total);
-  cartList.textContent=list.join(', ');
   cartProducts.innerHTML=productHtml.join('');
   cartNext.disabled=total<=0;
 
